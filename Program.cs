@@ -11,6 +11,8 @@ namespace CodingExcercises
                return;
            }
       
+
+      
            int temp = lastNumber;  
            lastNumber = currentNumber;
            currentNumber = temp + currentNumber;
