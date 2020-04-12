@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*            
+
+
+
+*/
+using System;
 using System.Collections.Generic;
 
 namespace CodingExcercises
@@ -47,13 +52,14 @@ namespace CodingExcercises
             //SegregateZerosAndOnes();
             #endregion
 
-            #region 5. Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. Examples:  Input: arr[] = {9, 29,10, 2, 50, 24, 100}, n = 50  Output: Pair Found: (50, 100)
+            #region 18. Tow Sum Problem, 5. Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. Examples:  Input: arr[] = {9, 29,10, 2, 50, 24, 100}, n = 50  Output: Pair Found: (50, 100)
                 //var resultArray = DiffArray_O_n_2(); PrintArray(resultArray);
                 //  PairsInArrayUsingDictionary_O_n();  Console.Read();
                 //var tuple = PairInArrayUsingDictionary_O_n(); Console.WriteLine($"{tuple.Item1}, {tuple.Item2}");
             #endregion
 
-            #region 6. Write a simple code for finding the most repeated character in given string                                
+            #region 6. Write a simple code for finding the most repeated character in given string, 14. Most Frequent Element in an array, 17. Most frequent number in an array, 19. Most frequent element in an array
+                              
             //   int count = CountOccurrencesInAString(args[0], 'a');
             //   Console.WriteLine("Number of times the given character is seen in the string is {0}", count);
             //   Console.ReadKey();
@@ -62,48 +68,48 @@ namespace CodingExcercises
             #region 7.  write a simple function to check if the Binary Tree is a Binary Search Tree.
 
             #endregion
-    /*
-            8. Tic tac toe 3x3 solving
+    
+            #region 8. Tic tac toe 3x3 solving
 
-            9. Tic tac toe check winner
+            #endregion
 
-            10. Write a helper function to return input array data in small chunks by replacing \n with \r\n.
+            #region 9. Tic tac toe check winner
 
-            11. Combination of 3 numbers to match sum in array
+            #endregion
 
-            12. Write a function to reverse the order of words in a string ?
+            #region 10. Write a helper function to return input array data in small chunks by replacing \n with \r\n.
 
-            13. Write a function to check if two strings are anagrams or not ?
+            #endregion
 
-            14. Most Frequent Element in an array
+            #region 11. Combination of 3 numbers to match sum in array
+            #endregion
 
-            15. Gave a solution using two for loops.
+            #region 12. Write a function to reverse the order of words in a string ?
+            #endregion
 
-            16. Function to print the Factorial of a given number
+            #region 13. Write a function to check if two strings are anagrams or not ?
+            #endregion
 
-            17. Most frequent number in an array
+            #region 16. Function to print the Factorial of a given number
+            #endregion
 
-            18. Tow Sum Problem
+            #region 20. Check whether the string is unique or not.
+            #endregion
 
-            19. Most frequent element in an array
+            #region 21. Swap numbers without addl variable
+            #endregion
 
-            20. Check whether the string is unique or not.
+            #region 22. consider there is a large array
+                // char[] Input = new char[10000]; {a,b,\n,c,d,e,\n,f,g,\n,h,\n.........}
+                // char[] output = new char[4];
+                // When the input array has '/n' we should return it as '\r ' '\n' as two separate characters.
+            #endregion
 
-            21. Swap numbers without addl variable
+            #region 23. find the length of the longest substring without repeating characters, string s = "abcabcbb"  out put abc
+            #endregion
 
-            22. consider there is largest array
-
-            23. char[] Input = new char[10000]; {a,b,\n,c,d,e,\n,f,g,\n,h,\n.........}
-
-            24. char[] output = new char[4];
-
-            25. find the length of the longest substring without repeating characters
-
-            26. string s = "abcabcbb"  out put abc
-
-            27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
-
-            When the input array has '/n' we should return it as '\r ' '\n' as two separate characters.*/
+            #region 27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
+            #endregion
 
         }
 
