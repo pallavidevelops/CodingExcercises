@@ -1,9 +1,4 @@
-﻿/*            
-
-
-
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace CodingExcercises
@@ -75,6 +70,8 @@ namespace CodingExcercises
 
             #region 9. Tic tac toe check winner
 
+            CheckTicTacWinner();
+
             #endregion
 
             #region 10. Write a helper function to return input array data in small chunks by replacing \n with \r\n.
@@ -105,7 +102,7 @@ namespace CodingExcercises
                 // When the input array has '/n' we should return it as '\r ' '\n' as two separate characters.
             #endregion
 
-            #region 23. find the length of the longest substring without repeating characters, string s = "abcabcbb"  out put abc
+            #region 23. find the length of the longest substring without repeating characters, input string s = "abcabcbb", output abc
             #endregion
 
             #region 27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
@@ -161,7 +158,6 @@ namespace CodingExcercises
             Console.WriteLine($"The max consecutive repeated character is {char1} and repeated {max} times.");
             
         }
-
         private static void PrintDictionary(Dictionary<char, int> charintDict)
         {
             foreach(var item in charintDict){
@@ -460,6 +456,73 @@ namespace CodingExcercises
                 }
                 Console.WriteLine("The max occurrences of {0} is {1} times", maxCountKey ,maxCountValue);
                 Console.ReadKey();
+        }
+        enum TicOrTac{Empty, X, O};
+        enum WinnerState{None,User1,User2};
+
+        public static int[] SelectRandomIndex(){
+            int randonIndexX; int randonIndexY;
+            do{
+                randonIndexX = input.Next(0,3);
+                randonIndexY = input.Next(0,3);
+                // Console.WriteLine($"{randonIndexX}, {randonIndexY} for indices");
+            }while(randomIndexDictionary.ContainsKey(randonIndexX.ToString() + randonIndexY.ToString()));
+            
+            randomIndexDictionary.Add(randonIndexX.ToString() + randonIndexY.ToString(), true);
+            return new int[]{randonIndexX, randonIndexY};
+        }
+        private static Dictionary<string, bool> randomIndexDictionary = new Dictionary<string, bool>();
+
+        static Random input = new Random();
+        static void CheckTicTacWinner(){
+           
+            TicOrTac[,] tictacArray = new TicOrTac[3, 3];
+            //Initialize the array values to be Blank-  0
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j < 3; j++){
+                    tictacArray[i,j] = TicOrTac.Empty;
+                }
+            }
+            tictacArray[0,0] = TicOrTac.Empty;
+            bool winner = false;
+            int[] userInputIndex = new int[2];
+            TicOrTac userInput ;
+             PrintTicTac(tictacArray);
+          
+                int k = 0;
+                bool userState = true;
+                while (k <= 9)
+                {                   
+                    userInputIndex = SelectRandomIndex();
+                    userInput = userState ? TicOrTac.X : TicOrTac.O;
+
+                   Console.WriteLine("{2} selected index values : ({0}, {1}) and the Input is:{3}",userInputIndex[0],userInputIndex[1],userState? "User 1" : "User 2", (TicOrTac)userInput);
+                   tictacArray[userInputIndex[0],userInputIndex[1]]  = userInput;
+                    PrintTicTac(tictacArray);
+                    k++;
+                    userState = !userState;                    
+                }
+        }
+
+        // private static WinnerState CheckTicTacWinner(TicOrTac[,] tictacArray){
+        //     for(int i=0; i< 3; i++){
+        //         for(int j =0; j< 3 ; j++){
+        //             // if(){
+
+        //             // }
+        //         }
+        //     }
+        // }
+
+
+        private static void PrintTicTac(TicOrTac[,] tictacArray)
+        {
+            for(int i=0; i < 3; i++ ){
+                for(int j = 0; j < 3; j++ ){
+                    Console.Write("|_{0}_|",tictacArray[i,j] == TicOrTac.Empty ? "_" : tictacArray[i,j].ToString());
+                }
+                Console.WriteLine("");
+            }
         }
     }
 }
