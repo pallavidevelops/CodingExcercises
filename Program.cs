@@ -3,107 +3,107 @@ using System.Collections.Generic;
 
 namespace CodingExcercises
 {
-class Program
-{
-    static void Main(string[] args)
+    class Program
     {
-        #region fibonacii
-        // int seriesLength = 2;
-        // Int32.TryParse(args[0], out seriesLength);
-        // RecursiveFS(seriesLength);
-        // Console.ReadKey();      
-        #endregion
+        static void Main(string[] args)
+        {
+            #region fibonacii
+            // int seriesLength = 2;
+            // Int32.TryParse(args[0], out seriesLength);
+            // RecursiveFS(seriesLength);
+            // Console.ReadKey();      
+            #endregion
 
-        #region  Occurrences
-        //Count Occurrences - how many times a number can be divided by 2
-        // int numberInput = 2;
-        // Int32.TryParse(args[0], out numberInput);
-        // int i= 0;
-        // for(; numberInput > 1; numberInput = numberInput / 2, i++){
-        // }
-        // Console.WriteLine("Number of times the given number is divisible by 2 is {0}", i);
-        // Console.ReadKey();
-        // MaxOccurrencesInAnArray();
-        #endregion
+            #region  Occurrences
+            //Count Occurrences - how many times a number can be divided by 2
+            // int numberInput = 2;
+            // Int32.TryParse(args[0], out numberInput);
+            // int i= 0;
+            // for(; numberInput > 1; numberInput = numberInput / 2, i++){
+            // }
+            // Console.WriteLine("Number of times the given number is divisible by 2 is {0}", i);
+            // Console.ReadKey();
+            // MaxOccurrencesInAnArray();
+            #endregion
 
-        #region 1. find maximum consecutive repeating character in string.  Input : str = "aaaaaabbcbbbbbcbbbb"  Output :a
-        // MaxConsecutiveOccurrence();
-        #endregion
+            #region 1. find maximum consecutive repeating character in string.  Input : str = "aaaaaabbcbbbbbcbbbb"  Output :a
+            // MaxConsecutiveOccurrence();
+            #endregion
 
-        #region 2. Merge two sorted arrays into one sorted array   int[] A = {1,5,7,12,18,32}  int[] B = {2,4,9,16,27,76,98}
-        /*           
-            int[] a = {1,5,7,12,18,32,32};
-            int[] b = {2,4,9,16,27,76,98};
-            Merge2SortedArraysInto1(a,b); Console.ReadKey();
-        */
-        #endregion
+            #region 2. Merge two sorted arrays into one sorted array   int[] A = {1,5,7,12,18,32}  int[] B = {2,4,9,16,27,76,98}
+            /*           
+                int[] a = {1,5,7,12,18,32,32};
+                int[] b = {2,4,9,16,27,76,98};
+                Merge2SortedArraysInto1(a,b); Console.ReadKey();
+            */
+            #endregion
 
-        #region 3. Write a small method  to do the below task.. this is not in sorted order.. all negative characters in left and positive on the right..  input = { 4, -3, 2, -5, 5, -1, 3}  output= {-3,-5, -1, 4, 2, 5, 3}
-        // int[] array = {4, -3, 2, -5, 5, -1, 3};
-        //NegLeftPosRight(array); Console.ReadKey();        
-        #endregion
+            #region 3. Write a small method  to do the below task.. this is not in sorted order.. all negative characters in left and positive on the right..  input = { 4, -3, 2, -5, 5, -1, 3}  output= {-3,-5, -1, 4, 2, 5, 3}
+            // int[] array = {4, -3, 2, -5, 5, -1, 3};
+            //NegLeftPosRight(array); Console.ReadKey();        
+            #endregion
 
-        #region 4. Segregate 0s on left side and 1s on right side of the array. Traverse array only once. Input array   =  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0] Output array =  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
-        //SegregateZerosAndOnes();
-        #endregion
+            #region 4. Segregate 0s on left side and 1s on right side of the array. Traverse array only once. Input array   =  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0] Output array =  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+            //SegregateZerosAndOnes();
+            #endregion
 
-        #region 5. Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. Examples:  Input: arr[] = {9, 29,10, 2, 50, 24, 100}, n = 50  Output: Pair Found: (50, 100)
-            //var resultArray = DiffArray_O_n_2(); PrintArray(resultArray);
-            //  PairsInArrayUsingDictionary_O_n();  Console.Read();
-            //var tuple = PairInArrayUsingDictionary_O_n(); Console.WriteLine($"{tuple.Item1}, {tuple.Item2}");
-        #endregion
+            #region 5. Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. Examples:  Input: arr[] = {9, 29,10, 2, 50, 24, 100}, n = 50  Output: Pair Found: (50, 100)
+                //var resultArray = DiffArray_O_n_2(); PrintArray(resultArray);
+                //  PairsInArrayUsingDictionary_O_n();  Console.Read();
+                //var tuple = PairInArrayUsingDictionary_O_n(); Console.WriteLine($"{tuple.Item1}, {tuple.Item2}");
+            #endregion
 
-        #region 6. Write a simple code for finding the most repeated character in given string                                
-        //   int count = CountOccurrencesInAString(args[0], 'a');
-        //   Console.WriteLine("Number of times the given character is seen in the string is {0}", count);
-        //   Console.ReadKey();
-        #endregion
+            #region 6. Write a simple code for finding the most repeated character in given string                                
+            //   int count = CountOccurrencesInAString(args[0], 'a');
+            //   Console.WriteLine("Number of times the given character is seen in the string is {0}", count);
+            //   Console.ReadKey();
+            #endregion
 
-        #region 7.  write a simple function to check if the Binary Tree is a Binary Search Tree.
+            #region 7.  write a simple function to check if the Binary Tree is a Binary Search Tree.
 
-        #endregion
-/*
-        8. Tic tac toe 3x3 solving
+            #endregion
+    /*
+            8. Tic tac toe 3x3 solving
 
-        9. Tic tac toe check winner
+            9. Tic tac toe check winner
 
-        10. Write a helper function to return input array data in small chunks by replacing \n with \r\n.
+            10. Write a helper function to return input array data in small chunks by replacing \n with \r\n.
 
-        11. Combination of 3 numbers to match sum in array
+            11. Combination of 3 numbers to match sum in array
 
-        12. Write a function to reverse the order of words in a string ?
+            12. Write a function to reverse the order of words in a string ?
 
-        13. Write a function to check if two strings are anagrams or not ?
+            13. Write a function to check if two strings are anagrams or not ?
 
-        14. Most Frequent Element in an array
+            14. Most Frequent Element in an array
 
-        15. Gave a solution using two for loops.
+            15. Gave a solution using two for loops.
 
-        16. Function to print the Factorial of a given number
+            16. Function to print the Factorial of a given number
 
-        17. Most frequent number in an array
+            17. Most frequent number in an array
 
-        18. Tow Sum Problem
+            18. Tow Sum Problem
 
-        19. Most frequent element in an array
+            19. Most frequent element in an array
 
-        20. Check whether the string is unique or not.
+            20. Check whether the string is unique or not.
 
-        21. Swap numbers without addl variable
+            21. Swap numbers without addl variable
 
-        22. consider there is largest array
+            22. consider there is largest array
 
-        23. char[] Input = new char[10000]; {a,b,\n,c,d,e,\n,f,g,\n,h,\n.........}
+            23. char[] Input = new char[10000]; {a,b,\n,c,d,e,\n,f,g,\n,h,\n.........}
 
-        24. char[] output = new char[4];
+            24. char[] output = new char[4];
 
-        25. find the length of the longest substring without repeating characters
+            25. find the length of the longest substring without repeating characters
 
-        26. string s = "abcabcbb"  out put abc
+            26. string s = "abcabcbb"  out put abc
 
-        27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
+            27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
 
-        When the input array has '/n' we should return it as '\r ' '\n' as two separate characters.*/
+            When the input array has '/n' we should return it as '\r ' '\n' as two separate characters.*/
 
         }
 
@@ -286,7 +286,7 @@ class Program
                 // }
                 // currentNode = currentNode.Next;
                 // PrintLinkedList(linkedList);
-           // }
+        // }
         }
 
         private static void NegLeftPosRightUsingSwapping0n2(int[] array)
@@ -387,10 +387,10 @@ class Program
             int aIndex=0, bIndex=0, cIndex = 0;
             int aLength = a.Length, bLength = b.Length;
             int[] c = new int[aLength + bLength];
-       //check if a and b index are lesser than their lengths
+    //check if a and b index are lesser than their lengths
             while(aIndex < aLength && bIndex < bLength){
-               // check if a[aI] < b[bI] update c[cI] = a[aI] then increment aI and cI
-               //else  c[cI] = b[bI] increment bI and cI        
+            // check if a[aI] < b[bI] update c[cI] = a[aI] then increment aI and cI
+            //else  c[cI] = b[bI] increment bI and cI        
                 if(a[aIndex] < b[bIndex]) {
                     c[cIndex] = a[aIndex];
                     cIndex++;
@@ -429,7 +429,8 @@ class Program
             return count;
         }
 
-        static void MaxOccurrencesInAnArray(){
+        static void MaxOccurrencesInAnArray()
+        {
             var array = new []{2,1,4,67,2,12,1,3,1,2};
             var arrayLength = array.Length;
             var countSequence = new Dictionary<int, int>();
