@@ -70,9 +70,9 @@ namespace CodingExcercises
             #endregion
 
             #region 9. Tic tac toe check winner
-            // TicTacToe tictac = new TicTacToe();
-            //TicTacToe.PlayTicTacToe();
-            // CheckTicTacWinner();
+            TicTacToe tictac = new TicTacToe();
+            TicTacToe.PlayTicTacToe();
+            //CheckTicTacWinner();// using inner method
 
             #endregion
 
@@ -125,12 +125,12 @@ namespace CodingExcercises
 
             // Node.PrintNodes(node1);
 
-           Node node1 = Node.CreateLinkedList(10);
-           Node node2 = Node.CreateLinkedList(8);
+        //    Node node1 = Node.CreateLinkedList(10);
+        //    Node node2 = Node.CreateLinkedList(8);
 
-           MergeTwoLinkedLists(node1, node2);
+        //    MergeTwoLinkedLists(node1, node2);
 
-           BubbleSort_LinkedList(node1);
+        //    BubbleSort_LinkedList(node1);
 
 
 
