@@ -71,7 +71,7 @@ namespace CodingExcercises
 
             #region 9. Tic tac toe check winner
             // TicTacToe tictac = new TicTacToe();
-            TicTacToe.PlayTicTacToe();
+            //TicTacToe.PlayTicTacToe();
             // CheckTicTacWinner();
 
             #endregion
@@ -110,6 +110,49 @@ namespace CodingExcercises
             #region 27. Write a function that parses an input buffer and sends output of the size of output array. We should also return the position of the input buffer and the size used in the output array.
             #endregion
 
+            // var node1 = new Node(14);
+            // var node2 = new Node(1);
+
+            // node1.Next = node2;
+            
+            // var node3 = new Node(23);
+
+            // node2.Next = node3;
+
+            // var node4 = new Node(3);
+
+            // node3.Next = node4;
+
+            // Node.PrintNodes(node1);
+
+           Node node1 = Node.CreateLinkedList(10);
+           Node node2 = Node.CreateLinkedList(8);
+
+           MergeTwoLinkedLists(node1, node2);
+
+           BubbleSort_LinkedList(node1);
+
+
+
+        }
+
+        private static void BubbleSort_LinkedList(Node node1)
+        {
+            int counter = Node.CountNodes(node1);
+           Node.SortedLinkedList(node1);
+        }
+
+        private static void MergeTwoLinkedLists(Node node1, Node node2)
+        {
+            Node newHead = node1;
+            Node lastNode = null;
+           while(node1 != null){
+               lastNode = node1;
+               node1 = node1.Next;
+           }
+           lastNode.Next = node2;
+
+           Node.PrintNodes(newHead);
         }
 
         static void RecursiveFibonacciSeries( int counter, int lastNumber = 1, int currentNumber = 0)
