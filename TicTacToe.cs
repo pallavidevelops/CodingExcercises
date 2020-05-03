@@ -10,20 +10,20 @@ namespace CodingExercises
         private enum TicOrTac{Empty, X, O};
         private enum WinnerState{None,User1,User2};
 
-            static int[] SelectRandomIndex(){
+        private static int[] SelectRandomIndex(){
             int randonIndexX; int randonIndexY;
             do{
                 randonIndexX = input.Next(0,3);
                 randonIndexY = input.Next(0,3);
                 // Console.WriteLine($"{randonIndexX}, {randonIndexY} for indices");
-            }while(randomIndexDictionary.ContainsKey(randonIndexX.ToString() + randonIndexY.ToString()));
+            }while(randomIndexDictionary.ContainsKey(new Tuple<int, int>(randonIndexX, randonIndexY)));
             
-            randomIndexDictionary.Add(randonIndexX.ToString() + randonIndexY.ToString(), true);
+            randomIndexDictionary.Add(new Tuple<int, int>(randonIndexX, randonIndexY), true);
             return new int[]{randonIndexX, randonIndexY};
         }
-        static Dictionary<string, bool> randomIndexDictionary = new Dictionary<string, bool>();
+        private static Dictionary<Tuple<int, int>, bool> randomIndexDictionary = new Dictionary<Tuple<int, int>, bool>();
 
-        static Random input = new Random();
+        private static Random input = new Random();
         public static void PlayTicTacToe(){
             
             TicOrTac[,] tictacArray = new TicOrTac[3, 3];
@@ -50,7 +50,13 @@ namespace CodingExercises
                     Console.WriteLine("{2} selected index values : ({0}, {1}) and the Input is:{3}",userInputIndex[0],userInputIndex[1],userState? "User 1" : "User 2", (TicOrTac)userInput);
                     tictacArray[userInputIndex[0],userInputIndex[1]]  = userInput;
                     PrintTicTac(tictacArray);
-                    winnerState = CheckTicTacWinner(tictacArray);
+                   // winnerState = CheckTicTacWinner(tictacArray); //or use this method
+                   if(userState){
+                       winnerState = CheckWinnerX(userInputIndex[0],userInputIndex[1]);
+                   }
+                   else{
+                       winnerState = CheckWinnerO(userInputIndex[0],userInputIndex[1]);
+                   }
                     if(winnerState != WinnerState.None){
                         winner = true;
                         Console.WriteLine($"{winnerState} has won the game!!");
@@ -63,7 +69,6 @@ namespace CodingExercises
                     userState = !userState;                    
                 }
         }
-
         private static WinnerState CheckTicTacWinner(TicOrTac[,] tictacArray){
             int lrCountUser1 = 0;
             int rlCountUser1 = 0;
@@ -106,6 +111,52 @@ namespace CodingExercises
             if(rlCountUser2 == 3) return WinnerState.User2;
             return WinnerState.None;
         }
+        private static int[] rowX = new int[3];
+        private static int[] colX = new int[3];
+        private static int left_right_diagX = 0;
+        private static int right_left_diagX = 0;  
+        private static int[] rowO = new int[3];
+        private static int[] colO = new int[3];
+        private static int left_right_diagO = 0;
+        private static int right_left_diagO = 0;  
+        private static WinnerState CheckWinnerX(int row, int col){
+            //row is marked rowX[3]
+            //col is marked colX[3]
+            //left_right_diagX[3] //0,0 1,1 2,2
+            //right_left_diagX[3] //0,2, 1,1 , 2,0
+            rowX[row]++;
+            colX[col]++;
+            if(row == col) { 
+                left_right_diagX++;
+                }
+            if(row + col == 2) {
+                right_left_diagX++;
+            }
+
+            if(rowX[row] == 3 || colX[col] == 3 || left_right_diagX == 3 || right_left_diagX == 3 ){
+                return WinnerState.User1;
+            }
+            return WinnerState.None;
+        }
+        private static WinnerState CheckWinnerO(int row, int col){
+            //row is marked rowX[3]
+            //col is marked colX[3]
+            //left_right_diagX[3] //0,0 1,1 2,2
+            //right_left_diagX[3] //0,2, 1,1 , 2,0
+            rowO[row]++;
+            colO[col]++;
+            if(row == col) { 
+                left_right_diagO++;
+                }
+            if(row+col == 2) {
+                right_left_diagO++;
+            }
+            if(rowO[row] == 3 || colO[col] == 3 || left_right_diagO == 3 || right_left_diagO == 3 ){
+                return WinnerState.User2;
+            }
+            return WinnerState.None;
+        }
+      
         private static void PrintTicTac(TicOrTac[,] tictacArray)
         {
             for(int i=0; i < 3; i++ ){

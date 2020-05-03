@@ -8,6 +8,16 @@ namespace CodingExcercises
     {
         static void Main(string[] args)
         {
+            #region merge Two Sorted Arrays
+            // var mergeSort = new MergeSort();
+
+            // mergeSort.MergeSortExample();
+            #endregion
+            #region merge Two Sorted Arrays  - Merge Sort Recursive
+             var mergeSort = new MergeSort();
+             int[] a = {3,56,6,2,6,3,45,63,5};
+            mergeSort.RecursiveMergeSort(a);
+            #endregion
             #region fibonacii
             // int seriesLength = 2;
             // Int32.TryParse(args[0], out seriesLength);
@@ -70,9 +80,9 @@ namespace CodingExcercises
             #endregion
 
             #region 9. Tic tac toe check winner
-            // TicTacToe tictac = new TicTacToe();
+            //TicTacToe tictac = new TicTacToe();
             //TicTacToe.PlayTicTacToe();
-            // CheckTicTacWinner();
+            //CheckTicTacWinner();// using inner method
 
             #endregion
 
@@ -125,12 +135,12 @@ namespace CodingExcercises
 
             // Node.PrintNodes(node1);
 
-           Node node1 = Node.CreateLinkedList(10);
-           Node node2 = Node.CreateLinkedList(8);
+        //    Node node1 = Node.CreateLinkedList(10);
+        //    Node node2 = Node.CreateLinkedList(8);
 
-           MergeTwoLinkedLists(node1, node2);
+        //    MergeTwoLinkedLists(node1, node2);
 
-           BubbleSort_LinkedList(node1);
+        //    BubbleSort_LinkedList(node1);
 
 
 

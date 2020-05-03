@@ -36,3 +36,7 @@ bin/
 
 # Visual Studio 2015
 .vs/
+*.dll
+*.dll
+*.pdb
+*.dll
