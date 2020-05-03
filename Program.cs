@@ -8,15 +8,18 @@ namespace CodingExcercises
     {
         static void Main(string[] args)
         {
+             #region merge Two Sorted Arrays
+                var llops = new LLOperations();
+                llops.AddLinkedListsWithCarry();
+            #endregion
             #region merge Two Sorted Arrays
-            // var mergeSort = new MergeSort();
-
-            // mergeSort.MergeSortExample();
+                // var mergeSort = new MergeSort();
+                // mergeSort.MergeSortExample();
             #endregion
             #region merge Two Sorted Arrays  - Merge Sort Recursive
-             var mergeSort = new MergeSort();
-             int[] a = {3,56,6,2,6,3,45,63,5};
-            mergeSort.RecursiveMergeSort(a);
+                // var mergeSort = new MergeSort();
+                // int[] a = {3,56,6,2,6,3,45,63,5};
+                // mergeSort.RecursiveMergeSort(a);
             #endregion
             #region fibonacii
             // int seriesLength = 2;
@@ -148,8 +151,8 @@ namespace CodingExcercises
 
         private static void BubbleSort_LinkedList(Node node1)
         {
-            int counter = Node.CountNodes(node1);
-           Node.SortedLinkedList(node1);
+        //     int counter = Node.CountNodes(node1);
+        //    Node.SortedLinkedList(node1);
         }
 
         private static void MergeTwoLinkedLists(Node node1, Node node2)
