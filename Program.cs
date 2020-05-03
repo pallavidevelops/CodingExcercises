@@ -8,9 +8,14 @@ namespace CodingExcercises
     {
         static void Main(string[] args)
         {
+             #region  Binary search Sorted Array
+                var bs = new BinarySearchArray();
+                var primes = new int[]{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
+                bs.SearchNumberInArray(17, primes);
+            #endregion
              #region merge Two Sorted Arrays
-                var llops = new LLOperations();
-                llops.AddLinkedListsWithCarry();
+                // var llops = new LLOperations();
+                // llops.AddLinkedListsWithCarry();
             #endregion
             #region merge Two Sorted Arrays
                 // var mergeSort = new MergeSort();
