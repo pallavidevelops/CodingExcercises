@@ -8,10 +8,31 @@ namespace CodingExcercises
     {
         static void Main(string[] args)
         {
+             #region  Binary search rotated Array find pivot
+                var bsr = new BinarySearchArray();
+                //var primesRo = new int[]{13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 2, 3, 5, 7, 11};
+                var rotatedSortedArray = new int[]{31, 37, 41, 43, 47, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+                int searchItem = 11;
+                bsr.PrintArray(rotatedSortedArray);
+                int pivot = bsr.FindPivotRotatedSortedArray(0, rotatedSortedArray.Length-1, rotatedSortedArray);
+                Console.WriteLine("Pivot is at index {0}", pivot.ToString());
+
+                //search two array split by pivot
+                int searchItemIndex;
+                if(searchItem >= rotatedSortedArray[pivot+1] && searchItem <= rotatedSortedArray[rotatedSortedArray.Length-1]){
+                         searchItemIndex = bsr.Search(pivot+1,rotatedSortedArray.Length -1, searchItem, rotatedSortedArray);
+                }
+                else{
+                         searchItemIndex = bsr.Search(0, pivot, searchItem, rotatedSortedArray);
+                }
+                 Console.WriteLine("Item found at index {0}", searchItemIndex);
+               
+                //
+            #endregion
              #region  Binary search Sorted Array
-                var bs = new BinarySearchArray();
-                var primes = new int[]{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
-                bs.SearchNumberInArray(17, primes);
+                // var bs = new BinarySearchArray();
+                // var primes = new int[]{13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 2, 3, 5, 7, 11};
+                // bs.SearchNumberInArray(2, primes);
             #endregion
              #region merge Two Sorted Arrays
                 // var llops = new LLOperations();
