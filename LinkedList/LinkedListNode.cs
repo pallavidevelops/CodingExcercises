@@ -11,7 +11,7 @@ namespace CodingExcercises{
         public LLNode(){
 
         }
-        public static LLNode AddNode(int value, ref LLNode head){
+        public static LLNode AddNode(int value, LLNode head){
             Console.WriteLine("ADDING node {0} ", value.ToString());
             if(head == null){
                 return new LLNode(value);
@@ -45,7 +45,7 @@ namespace CodingExcercises{
             var ll1Node1 = new LLNode(2);
             var ll1Node2 = new LLNode(4);
             ll1Node1.Next = ll1Node2;
-            var ll1Node3 = new LLNode(3);
+            var ll1Node3 = new LLNode(8);
             ll1Node2.Next = ll1Node3;
 
             var ll2Node1 = new LLNode(5);
@@ -66,8 +66,9 @@ namespace CodingExcercises{
            LLNode head3 = null;
            
         //Add two lls
-        while(head1 != null || head2 != null){
-            sum = head1.Value + head2.Value + carry;
+        while(head1 != null || head2 != null || carry == 1){
+            if(head1 != null && head2 != null){
+                sum = head1.Value + head2.Value + carry;
             if(sum > 9){
                 carry = 1;
                 sum = sum % 10;
@@ -79,12 +80,17 @@ namespace CodingExcercises{
               head3 = new LLNode(sum);
             }
             else{
-                PrintNodes(head3);
-                LLNode.AddNode(sum,ref head3);
+               LLNode.AddNode(sum, head3);
             }
             head1 = head1.Next;
             head2 = head2.Next;
+            }
+            else if(carry == 1){
+                LLNode.AddNode(carry, head3);
+                carry = 0;
+            }
         }
+
         PrintNodes(head3);
 
         }
