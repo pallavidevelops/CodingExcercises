@@ -17,16 +17,13 @@ namespace CodingExercises
 
         public int Search(int startIndex, int endIndex, int searchItem, int[] searchArray){
             Console.WriteLine("########################### Searching within array indices {0}, {1} ###########################",startIndex.ToString(), endIndex.ToString());
-            if(startIndex == endIndex) return -1;
+            if(startIndex == endIndex || startIndex > endIndex) return -1;
             if(searchArray[startIndex] == searchItem) return startIndex;
             if(searchArray[endIndex] == searchItem) return endIndex;
             int midIndex = 0;
             if(searchArray[startIndex] < searchItem && searchArray[endIndex] > searchItem){
                 midIndex = (startIndex + endIndex) / 2;
                 }
-            else if(startIndex != 0){
-               midIndex = startIndex/2;
-            }
                 if(searchArray[midIndex] == searchItem) return midIndex;
 
                 if(searchArray[midIndex] < searchItem){
