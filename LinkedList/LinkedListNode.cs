@@ -65,36 +65,75 @@ namespace CodingExcercises{
            var ll3Node1 = new LLNode();
            LLNode head3 = null;
            
-        //Add two lls
-        while(head1 != null || head2 != null || carry == 1){
-            if(head1 != null && head2 != null){
-                sum = head1.Value + head2.Value + carry;
-            if(sum > 9){
-                carry = 1;
-                sum = sum % 10;
+             //Add two lls
+            while(head1 != null || head2 != null || carry == 1){
+                if(head1 != null && head2 != null){
+                    sum = head1.Value + head2.Value + carry;
+                if(sum > 9){
+                    carry = 1;
+                    sum = sum % 10;
+                }
+                else{
+                    carry = 0;
+                }
+                if(head3 == null){
+                head3 = new LLNode(sum);
+                }
+                else{
+                LLNode.AddNode(sum, head3);
+                }
+                head1 = head1.Next;
+                head2 = head2.Next;
+                }
+                else if(carry == 1){
+                    LLNode.AddNode(carry, head3);
+                    carry = 0;
+                }
             }
-            else{
-                carry = 0;
-            }
-            if(head3 == null){
-              head3 = new LLNode(sum);
-            }
-            else{
-               LLNode.AddNode(sum, head3);
-            }
-            head1 = head1.Next;
-            head2 = head2.Next;
-            }
-            else if(carry == 1){
-                LLNode.AddNode(carry, head3);
-                carry = 0;
-            }
+
+            PrintNodes(head3);
+
         }
 
-        PrintNodes(head3);
+        public void InitiateLinkedList(){
+            var ll1Node1 = new LLNode(1);
+            var ll1Node2 = new LLNode(2);
+            ll1Node1.Next = ll1Node2;
+            var ll1Node3 = new LLNode(3);
+            ll1Node2.Next = ll1Node3;
+             var ll1Node4 = new LLNode(4);
+            ll1Node3.Next = ll1Node4;
+             var ll1Node5 = new LLNode(5);
+            ll1Node4.Next = ll1Node5;
+             var ll1Node6 = new LLNode(6);
+            ll1Node5.Next = ll1Node6;
+            var head1 = ll1Node1;
+            PrintNodes(head1);
+            ReverseLinkedList(head1);
+            }
+        public static void ReverseLinkedList(LLNode head){
+            var headNode = head;
+            LLNode currentNode = head;
+            LLNode previousNode = null;
+            LLNode nextNode = head;
+            LLNode previousNodeTemp = null;
+            LLNode nextNodeTemp = null;
 
+            while(currentNode != null){
+                //values from past iteration
+                previousNodeTemp = previousNode;
+              
+                // for continuing with next iteration
+                previousNode = currentNode;
+                nextNode = currentNode.Next;
+
+                currentNode.Next = previousNodeTemp;
+
+                currentNode = nextNode;
+
+            } 
+            PrintNodes(previousNode);
         }
-
 
          public static void PrintNodes(LLNode node){
 
