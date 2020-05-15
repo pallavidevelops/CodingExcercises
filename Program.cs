@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using CodingExercises;
 
 namespace CodingExcercises
@@ -9,23 +10,48 @@ namespace CodingExcercises
         static void Main(string[] args)
         {
              #region  Binary search rotated Array find pivot
+             int[] array = new int[]{10,20,30,40,50,60};
+             MergeAraysWithoutSorting(2, array);
+             /*Array = 10 20 30 40 50 60
+              0.  1.  2.  3. 4.  5 
+
+
+                int n = 2;
+
+                20 10 40 30 60 50
+                1    0   3.  2.  5   4
+
+                int n = 3
+                30 20 10 60 50 40
+                2.  1.   0.  5.  4.  3
+
+
+                int n=4
+                40 30 20 10 60 50
+
+                //10 20 30 40
+
+                //assuming the input array is sorted in ascending order
+                */
+             #endregion
+             #region  Binary search rotated Array find pivot
                 var bsr = new BinarySearchArray();
                 //var primesRo = new int[]{13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 2, 3, 5, 7, 11};
-                var rotatedSortedArray = new int[]{31, 37, 41, 43, 47, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
-                int searchItem = 11;
-                bsr.PrintArray(rotatedSortedArray);
-                int pivot = bsr.FindPivotRotatedSortedArray(0, rotatedSortedArray.Length-1, rotatedSortedArray);
-                Console.WriteLine("Pivot is at index {0}", pivot.ToString());
+                // var rotatedSortedArray = new int[]{31, 37, 41, 43, 47, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+                // int searchItem = 11;
+                // bsr.PrintArray(rotatedSortedArray);
+                // int pivot = bsr.FindPivotRotatedSortedArray(0, rotatedSortedArray.Length-1, rotatedSortedArray);
+                // Console.WriteLine("Pivot is at index {0}", pivot.ToString());
 
-                //search two array split by pivot
-                int searchItemIndex;
-                if(searchItem >= rotatedSortedArray[pivot+1] && searchItem <= rotatedSortedArray[rotatedSortedArray.Length-1]){
-                         searchItemIndex = bsr.Search(pivot+1,rotatedSortedArray.Length -1, searchItem, rotatedSortedArray);
-                }
-                else{
-                         searchItemIndex = bsr.Search(0, pivot, searchItem, rotatedSortedArray);
-                }
-                 Console.WriteLine("Item found at index {0}", searchItemIndex);
+                // //search two array split by pivot
+                // int searchItemIndex;
+                // if(searchItem >= rotatedSortedArray[pivot+1] && searchItem <= rotatedSortedArray[rotatedSortedArray.Length-1]){
+                //          searchItemIndex = bsr.Search(pivot+1,rotatedSortedArray.Length -1, searchItem, rotatedSortedArray);
+                // }
+                // else{
+                //          searchItemIndex = bsr.Search(0, pivot, searchItem, rotatedSortedArray);
+                // }
+                //  Console.WriteLine("Item found at index {0}", searchItemIndex);
                
                 //
             #endregion
@@ -173,6 +199,29 @@ namespace CodingExcercises
 
 
 
+        }
+        public static void MergeAraysWithoutSorting(int num, int[] array){
+            PrintArray(array);
+            List<int> res = new List<int>(); int segments = array.Length / num; int count = num;
+            for(int i = num; segments >= 1; i = i + num){
+                    count = num;
+                for(int j = i ; count > 0 ; j--){
+                     res.Add(array[j-1]);
+                    count --;
+                    }
+                    segments--;
+            }
+            for(int i = 1;i <= (array.Length % num ); i++){
+                res.Add(array[array.Length - i]);
+            }
+            PrintArrayList(res);
+
+        }
+        public static void PrintArrayList(List<int> array){
+            foreach(var item in array){
+                Console.Write("{0}  ", item.ToString());
+            }
+            Console.WriteLine();
         }
 
         private static void BubbleSort_LinkedList(Node node1)
