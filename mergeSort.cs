@@ -49,9 +49,7 @@ private int[] MergeSortedArrays(int[] firstArray, int[] secondArray){
         resultArrayIndex--; 
     }
     return resultArray;
-}
-
-                            
+}                           
 public int[] RecursiveMergeSort(int[] arrayToSort){
      Console.WriteLine("<--------------------Input Array------------------->");
     PrintArray(arrayToSort);
@@ -87,17 +85,48 @@ public int[] RecursiveMergeSort(int[] arrayToSort){
     return MergeSortedArrays(leftArray, rightArray);
     
 }
-
-  static void PrintArray(int[] array){
+static void PrintArray(int[] array){
             if(array == null)  Console.WriteLine("Empty Array");
             int arrayLength = array.Length;
                 for(int k = 0; k < arrayLength; k++){
                 Console.Write(" {0} ", array[k]);
             }
             Console.WriteLine();
+    
+    }
+
+
+    
+private static int temp{get; set;}
+public int[] MergeReversedSegmentsInArray(int[] array, int segmentLength, int startIndex, int endIndex){
+            // int n = 2;
+                        //         10 20 30 40 50 60 70
+                        //         20 10 40 30 60 50 70
+                        //         1  0  3  2  5  4
+            // startIndex = 0 , endIndex = segmentLength - 1
+             Console.WriteLine($"<--------------------{startIndex}, {endIndex}-------------------->");
+            int midSegmentIndex = (startIndex + endIndex)/2;
+            int count= 0;
+            for(int i = startIndex; i <= midSegmentIndex; i++){
+                temp = array[i];
+                array[i] = array[endIndex- count];
+                array[endIndex -count] = temp;
+                count++;
+                Console.WriteLine($"<-----------------{startIndex}, {endIndex}----------------->");
+                PrintArray(array);
+            }
+            
+            startIndex = endIndex + 1;
+            if(startIndex >= array.Length){ //array is rearranged
+                return array;
+            }
+            endIndex = startIndex + segmentLength -1;
+            if(endIndex >= array.Length){
+                endIndex = array.Length -1;
+            }
+            return MergeReversedSegmentsInArray(array, segmentLength, startIndex, endIndex);
+
         }
-
-
 
 
 

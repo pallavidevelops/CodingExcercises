@@ -2,40 +2,99 @@
 using System.Collections.Generic;
 using System.Collections;
 using CodingExercises;
+using System.Linq;
 
 namespace CodingExcercises
 {
     class Program
     {
+       
+        private static int temp { get; set;}
+        private static int recursionCount { get; set;}
+       
+        public static int[] ReverseArrayInSegments(int[] array, int segmentLength, int segmentNumber, int startIndex, int endIndex){
+            //NOT WORKING
+             // int n = 2;
+                        //         20 10 40 30 60 50
+                        //         1  0  3  2  5  4
+                        // 1,0,1
+
+                        // startIndex      0  1  2  3  4  5  6
+                        // endIndex        1  0  3  2  5  4  7
+                        // mid                0  2  2  4  4
+                        // swap            Y     Y     Y  
+                        // segmentNumber   1  2  2  3  3  4
+
+                //    int n=4
+                //                 40 30 20 10  60 50
+                //         startIndex      0  1  2  4  4  4
+                //         endIndex        3  2  1  5  6  5
+                //         mid             1  1  1  5  
+                //         swap            Y  Y  N      
+                //         segmentNumber   1  1  2  2     
+                    
+            recursionCount++;
+            Console.WriteLine($"segmentNumber:{segmentNumber}   startIndex:{startIndex}    endIndex:{endIndex}   recursionCount{recursionCount}");
+            if(startIndex >= array.Length) return array; 
+            //if all segments are done but for trailing elements
+            if(segmentNumber > (array.Length / segmentLength) && (array.Length % segmentLength) > 0 && endIndex >= array.Length){
+                    endIndex = array.Length -1;
+                    startIndex = array.Length - (array.Length % segmentLength);
+                    return ReverseArrayInSegments(array,segmentLength,segmentNumber, startIndex, endIndex);
+            }
+           //trailing segment is sorted
+            if((array.Length % segmentLength == 0) ? (segmentNumber == (array.Length / segmentLength)+1) : (segmentNumber == ((array.Length / segmentLength) + 2))){// FORGOT = to ...
+                return array;
+            }
+           
+            //if segment is sorted inc segmentNumber or range is incorrect
+            int mid = (startIndex + endIndex) / 2;
+            if(startIndex == endIndex || (startIndex >= mid && endIndex <= mid)) {
+                segmentNumber++;
+                endIndex = (segmentNumber * segmentLength) -1;
+                startIndex = endIndex - segmentLength + 1;
+                PrintArrayWithIndex(array);
+                return ReverseArrayInSegments(array,segmentLength,segmentNumber, startIndex, endIndex);
+            }
+                //swap startI with endInex
+                temp = array[startIndex];
+                array[startIndex] = array[endIndex];
+                array[endIndex] = temp;
+                startIndex++;
+                endIndex--;
+                  return ReverseArrayInSegments(array,segmentLength,segmentNumber, startIndex, endIndex);
+        }
+
+        public static void PrintArrayWithIndex(int[] array){
+            int i= 0;
+            foreach(var item in array){
+                Console.Write("     {0}/[{1}]",item.ToString(), i.ToString());
+                i++;
+            }
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
+
+            //MaxCharOccurrancesInString();
+
              #region  Binary search rotated Array find pivot
-             int[] array = new int[]{10,20,30,40,50,60};
-             MergeAraysWithoutSorting(2, array);
-             /*Array = 10 20 30 40 50 60
-              0.  1.  2.  3. 4.  5 
+                //  int[] array = new int[]{10,20,30,40,50,60,70, 80, 90, 100};
+                //  int segmentLength = 3;
 
-
-                int n = 2;
-
-                20 10 40 30 60 50
-                1    0   3.  2.  5   4
-
-                int n = 3
-                30 20 10 60 50 40
-                2.  1.   0.  5.  4.  3
-
-
-                int n=4
-                40 30 20 10 60 50
-
-                //10 20 30 40
-
-                //assuming the input array is sorted in ascending order
-                */
-             #endregion
+                // // MergeAraysWithoutSorting(2, array);
+                // int segmentNumber = 1;
+                // recursionCount = 0;
+                //PrintArrayWithIndex(array);
+                // ReverseArrayInSegments(array, segmentLength,segmentNumber, 0 ,segmentLength - 1);
+                // var _ms = new MergeSort();
+                // var resArray = _ms.MergeReversedSegmentsInArray(array, segmentLength, 0, segmentLength-1);
+                //  PrintArrayWithIndex(resArray);
+               
+                #endregion
              #region  Binary search rotated Array find pivot
-                var bsr = new BinarySearchArray();
+               // var bsr = new BinarySearchArray();
                 //var primesRo = new int[]{13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 2, 3, 5, 7, 11};
                 // var rotatedSortedArray = new int[]{31, 37, 41, 43, 47, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
                 // int searchItem = 11;
@@ -61,17 +120,21 @@ namespace CodingExcercises
                 // bs.SearchNumberInArray(2, primes);
             #endregion
              #region merge Two Sorted Arrays
-                // var llops = new LLOperations();
-                // llops.AddLinkedListsWithCarry();
+                var llops = new LLOperations();
+                //llops.AddLinkedListsWithCarry();
+                //llops.InitiateLinkedList();
+                
+
+
             #endregion
             #region merge Two Sorted Arrays
                 // var mergeSort = new MergeSort();
                 // mergeSort.MergeSortExample();
             #endregion
             #region merge Two Sorted Arrays  - Merge Sort Recursive
-                // var mergeSort = new MergeSort();
-                // int[] a = {3,56,6,2,6,3,45,63,5};
-                // mergeSort.RecursiveMergeSort(a);
+                //  var mergeSort = new MergeSort();
+                //  int[] a = {3,56,6,2,6,3,45,63,5};
+                //  mergeSort.RecursiveMergeSort(a);
             #endregion
             #region fibonacii
             // int seriesLength = 2;
@@ -81,7 +144,7 @@ namespace CodingExcercises
             #endregion
 
             #region  Occurrences
-            //Count Occurrences - how many times a number can be divided by 2
+            //elementsInSegment Occurrences - how many times a number can be divided by 2
             // int numberInput = 2;
             // Int32.TryParse(args[0], out numberInput);
             // int i= 0;
@@ -121,8 +184,8 @@ namespace CodingExcercises
 
             #region 6. Write a simple code for finding the most repeated character in given string, 14. Most Frequent Element in an array, 17. Most frequent number in an array, 19. Most frequent element in an array
                               
-            //   int count = CountOccurrencesInAString(args[0], 'a');
-            //   Console.WriteLine("Number of times the given character is seen in the string is {0}", count);
+            //   int elementsInSegment = elementsInSegmentOccurrencesInAString(args[0], 'a');
+            //   Console.WriteLine("Number of times the given character is seen in the string is {0}", elementsInSegment);
             //   Console.ReadKey();
             #endregion
 
@@ -201,15 +264,24 @@ namespace CodingExcercises
 
         }
         public static void MergeAraysWithoutSorting(int num, int[] array){
+                //             noSegments = arrLen / num; elementsInSegment = num
+                // list 
+                // for(i = num ; noSegments > 0 ; i = i +num)  noSegment --; elementsInSegment = num
+                // for (j = num;  ; elementsInSegment > 0 ;elementsInSegment--)   list.Add(a[j -1])
+
+                //for(i = 1 ; i <= arrlen % num ; i++)  list.Add[array[arrLen - i ]]
+                                //assuming the input array is sorted in ascending order
             PrintArray(array);
-            List<int> res = new List<int>(); int segments = array.Length / num; int count = num;
-            for(int i = num; segments >= 1; i = i + num){
-                    count = num;
-                for(int j = i ; count > 0 ; j--){
+            List<int> res = new List<int>(); 
+            int segmentInArray = array.Length / num; 
+            int elementsInSegment = num;
+            for(int i = num; segmentInArray > 0; i = i + num){
+                    elementsInSegment = num;
+                for(int j = i ; elementsInSegment > 0 ; j--){
                      res.Add(array[j-1]);
-                    count --;
+                    elementsInSegment --;
                     }
-                    segments--;
+                    segmentInArray--;
             }
             for(int i = 1;i <= (array.Length % num ); i++){
                 res.Add(array[array.Length - i]);
@@ -226,7 +298,7 @@ namespace CodingExcercises
 
         private static void BubbleSort_LinkedList(Node node1)
         {
-        //     int counter = Node.CountNodes(node1);
+        //     int elementsInSegmenter = Node.elementsInSegmentNodes(node1);
         //    Node.SortedLinkedList(node1);
         }
 
@@ -243,46 +315,46 @@ namespace CodingExcercises
            Node.PrintNodes(newHead);
         }
 
-        static void RecursiveFibonacciSeries( int counter, int lastNumber = 1, int currentNumber = 0)
+        static void RecursiveFibonacciSeries( int elementsInSegmenter, int lastNumber = 1, int currentNumber = 0)
         {
-            if(counter == 0){
+            if(elementsInSegmenter == 0){
                 return;
             }
             int temp = lastNumber;  
             lastNumber = currentNumber;
             currentNumber = temp + currentNumber;
-            Console.WriteLine(" {0} - {1}", currentNumber, counter);
-            counter--;
-            RecursiveFibonacciSeries(counter, lastNumber, currentNumber);
+            Console.WriteLine(" {0} - {1}", currentNumber, elementsInSegmenter);
+            elementsInSegmenter--;
+            RecursiveFibonacciSeries(elementsInSegmenter, lastNumber, currentNumber);
         }
         private static void MaxConsecutiveOccurrence()
         {
             String str = "aaaaaabbcbbbbbcbbbb";
             Char[] charArray = str.ToCharArray();
                 int length = charArray.Length;
-                int count = 1;
-                Dictionary<Char, int> charCountDict = new Dictionary<Char, int>();
+                int elementsInSegment = 1;
+                Dictionary<Char, int> charelementsInSegmentDict = new Dictionary<Char, int>();
             for(int i = 0; i < length-1; i++){
                 if(charArray[i] == charArray[i+1]){
-                    count++;
-                    if(charCountDict.ContainsKey(charArray[i])){
-                        if(charCountDict[charArray[i]] < count){
-                            charCountDict[charArray[i]] = count;
+                    elementsInSegment++;
+                    if(charelementsInSegmentDict.ContainsKey(charArray[i])){
+                        if(charelementsInSegmentDict[charArray[i]] < elementsInSegment){
+                            charelementsInSegmentDict[charArray[i]] = elementsInSegment;
                         }
                     }
                     else{
-                        charCountDict.Add(charArray[i],count);
+                        charelementsInSegmentDict.Add(charArray[i],elementsInSegment);
                     }
                 }
                 else{
-                    count = 1;
+                    elementsInSegment = 1;
                 }
             }
-        //    PrintDictionary(charCountDict);
+        //    PrintDictionary(charelementsInSegmentDict);
 
             int max = 0;
             Char char1 = Char.MinValue;
-            foreach(var item in charCountDict){
+            foreach(var item in charelementsInSegmentDict){
                 if(item.Value > max){
                         max = item.Value;
                         char1 = item.Key;               
@@ -552,43 +624,63 @@ namespace CodingExcercises
             }
         }
 
-        static int CountOccurrencesInAString(string inputString, char character){
+        static int elementsInSegmentOccurrencesInAString(string inputString, char character){
             
             var stringArray = inputString.ToCharArray();
-            int count = 0;
+            int elementsInSegment = 0;
             for(int i = 0; i < stringArray.Length ; i++){
                 if((char)stringArray[i] == (char)character){
-                    count = count +1;
+                    elementsInSegment = elementsInSegment +1;
                 }
             }
-            return count;
+            return elementsInSegment;
         }
 
         static void MaxOccurrencesInAnArray()
         {
             var array = new []{2,1,4,67,2,12,1,3,1,2};
             var arrayLength = array.Length;
-            var countSequence = new Dictionary<int, int>();
+            var elementsInSegmentSequence = new Dictionary<int, int>();
                 for(int i = 0; i < arrayLength; i++){
-                    if(countSequence.ContainsKey(array[i]))
+                    if(elementsInSegmentSequence.ContainsKey(array[i]))
                     {
-                        countSequence[array[i]]++;
+                        elementsInSegmentSequence[array[i]]++;
                     }
                     else{
-                        countSequence.Add(array[i],1);
+                        elementsInSegmentSequence.Add(array[i],1);
                     }
                 }
-            int maxCountKey = Int32.MinValue;
-            var maxCountValue  = 0;
-            
-                foreach(var keyValue in countSequence){
-                    if(keyValue.Value > maxCountValue){
-                            maxCountKey = keyValue.Key;
-                            maxCountValue = keyValue.Value;
+            int maxelementsInSegmentKey = Int32.MinValue;
+            var maxelementsInSegmentValue  = 0;
+
+                foreach(var keyValue in elementsInSegmentSequence){
+                    if(keyValue.Value > maxelementsInSegmentValue){
+                            maxelementsInSegmentKey = keyValue.Key;
+                            maxelementsInSegmentValue = keyValue.Value;
                     }
                 }
-                Console.WriteLine("The max occurrences of {0} is {1} times", maxCountKey ,maxCountValue);
+                Console.WriteLine("The max occurrences of {0} is {1} times", maxelementsInSegmentKey ,maxelementsInSegmentValue);
                 Console.ReadKey();
+        }
+
+        static void MaxCharOccurrancesInString(){
+            string input= "abaarbasc........";
+            Char[] charArray = input.ToCharArray();
+            Dictionary<Char,int> dictionary = new Dictionary<Char,int>();
+
+            for(int i= 0; i < charArray.Length; i++){
+                if(dictionary.ContainsKey(charArray[i])){
+                    dictionary[charArray[i]]++;
+                }
+                else
+                {
+                    dictionary.Add(charArray[i],1);
+                }
+            }
+            var maxOccu = dictionary.FirstOrDefault(dic => dic.Value == dictionary.Values.Max());
+            Console.WriteLine("Max occu of {0}", maxOccu.Key.ToString());
+
+
         }
     }
 }

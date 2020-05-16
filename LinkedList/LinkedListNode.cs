@@ -116,22 +116,15 @@ namespace CodingExcercises{
             LLNode currentNode = head;
             LLNode previousNode = null;
             LLNode nextNode = head;
-            LLNode previousNodeTemp = null;
+            //LLNode previousNodeTemp = null;
             LLNode nextNodeTemp = null;
 
             while(currentNode != null){
-                //values from past iteration
-                previousNodeTemp = previousNode;
-              
-                // for continuing with next iteration
-                previousNode = currentNode;
-                nextNode = currentNode.Next;
-
-                currentNode.Next = previousNodeTemp;
-
-                currentNode = nextNode;
-
-            } 
+              nextNode = currentNode.Next;
+              currentNode.Next = previousNode;
+              previousNode = currentNode;
+              currentNode = nextNode;
+              } 
             PrintNodes(previousNode);
         }
 
